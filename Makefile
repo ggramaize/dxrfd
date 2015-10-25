@@ -33,7 +33,7 @@ install: all
 	install -m 0644 -o $(DXRFD_USER) -g $(DXRFD_USER) xrf_README.txt $(DXRFD_HOME)/xrf_README.txt
 	install -m 0755 -o $(DXRFD_USER) -g $(DXRFD_USER) refresh-stats.sh $(DXRFD_HOME)/refresh-stats.sh
 	mkdir -p $(DXRFD_HOME)/www/g2_ircddb
-	chown -r $(DXRFD_USER):$(DXRFD_USER) $(DXRFD_HOME)/www
+	chown -R $(DXRFD_USER):$(DXRFD_USER) $(DXRFD_HOME)/www
 	install -m 0644 -o $(DXRFD_USER) -g $(DXRFD_USER) mm_spacer.gif $(DXRFD_HOME)/www/g2_ircddb/mm_spacer.gif
 	install -m 0644 -o $(DXRFD_USER) -g $(DXRFD_USER) mm_training.css $(DXRFD_HOME)/www/g2_ircddb/mm_training.css
 	ln -s $(DXRFD_HOME)/www/status.html $(DXRFD_HOME)/www/index.html
