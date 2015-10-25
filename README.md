@@ -1,6 +1,10 @@
 # dxrfd
 Open Source G2 DSTAR Reflectors (XRF reflectors)
 
+So far, this repo is _not_ production ready. Check back later for updates.
+
+Last update: 2015-10-25 07:10 UTC
+
 ## About this fork
 The purpose of this fork is to repackage properly this software.
 
@@ -17,7 +21,4 @@ Some bonuses if I'm motivated/have free time:
  * Adding the option to run this program as a daemon
  * Providing selinux modules 
 
-So far, this repo is _not_ production ready. Check back later for updates.
-
-Last update: 2015-10-25 07:10 UTC
 
