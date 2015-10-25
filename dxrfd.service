@@ -1,0 +1,17 @@
+[Unit]
+Description=D-Star XRF reflector
+After=syslog.target local-fs.target remote-fs.target network.target
+
+[Service]
+Type=simple
+User=dxrfd
+Group=dxrfd
+ExecStart=/srv/dxrfd/dxrfd ./dxrfd.cfg ./dxrfd.log
+Restart=on-abort
+WorkingDirectory=/srv/dxrfd/
+
+# Amount of time given for the service to start/shut down
+TimeoutSec=60
+
+[Install]
+WantedBy=multi-user.target
