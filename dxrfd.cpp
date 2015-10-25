@@ -1669,7 +1669,6 @@ static void runit()
    int call_valid = REG_NOERROR;
 
    bool allowed_to_connect = true;
-   bool deleted = false;
    char search_value[MAXHOSTNAMELEN + 7];
 
    char a_call[CALL_SIZE + 1];
@@ -3187,7 +3186,6 @@ static void runit()
                            free(user_pos->second);
                            a_user_ptr = user_pos->second = NULL;
                            a_user_list.erase(user_pos);
-                           deleted = true;
                            traceit("User %s ip=%s  removed\n", a_call, an_ip);
                         }
                      }
