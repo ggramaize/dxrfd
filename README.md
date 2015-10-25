@@ -6,7 +6,7 @@ So far, this repo is _not_ production ready. Check back later for updates.
 Last update: 2015-10-25 07:10 UTC
 
 ## About this fork
-The purpose of this fork is to repackage properly this software.
+The purpose of this fork is to properly repackage this software.
 
 The major objectives are:
  * To provide a proper Makefile instead of the 'doit' files (done)
