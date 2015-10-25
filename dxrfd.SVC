@@ -20,10 +20,10 @@ start)
       echo "dxrfd already running?"
       RETVAL=1
    else
-      /bin/rm -rf /var/log/dxrfd.log
+      /bin/rm -rf /srv/dxrfd/dxrfd.log
       echo -n "Starting dxrfd "
       echo
-      daemon "/root/dxrfd/dxrfd /root/dxrfd/dxrfd.cfg /var/log/dxrfd.log &"
+      daemon "/usr/bin/dxrfd /srv/dxrfd/dxrfd.cfg /srv/dxrfd/dxrfd.log &"
       RETVAL=0
    fi
    echo
