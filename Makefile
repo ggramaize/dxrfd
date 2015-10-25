@@ -44,5 +44,4 @@ uninstall:
 	rm -f $(prefix)/dxrfd
 	rm -f $(prefix)/xrf_lh
 	deluser $(DXRFD_USER) --force --remove-home
-	#delgroup $(DXRFD_USER) --only-if-empty
 	
