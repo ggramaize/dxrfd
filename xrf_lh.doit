@@ -1,0 +1,4 @@
+#!/bin/bash
+
+g++ -W -Wall -g -o xrf_lh xrf_lh.cpp -lrt
+

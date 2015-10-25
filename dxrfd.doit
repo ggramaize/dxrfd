@@ -1,0 +1,4 @@
+#!/bin/bash
+
+g++ -W -Wall -g -o dxrfd dxrfd.cpp -lrt -pthread
+

@@ -1,0 +1,55 @@
+#!/bin/bash
+#
+# /etc/rc.d/init.d/dxrfd
+#
+# Starts the dstar reflector as a Linux service
+#
+# chkconfig: 35 20 80
+# description: dstar reflector
+# processname: dxrfd
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+RETVAL=0
+case "$1" in
+start)
+   status dxrfd >/dev/null
+   RETVAL=$?
+   if [ "$RETVAL" = "0" ] ; then
+      echo "dxrfd already running?"
+      RETVAL=1
+   else
+      /bin/rm -rf /var/log/dxrfd.log
+      echo -n "Starting dxrfd "
+      echo
+      daemon "/root/dxrfd/dxrfd /root/dxrfd/dxrfd.cfg /var/log/dxrfd.log &"
+      RETVAL=0
+   fi
+   echo
+   ;;
+
+stop)
+   echo -n "Shutting down dxrfd: "
+   killproc dxrfd
+   RETVAL=0
+   echo
+   ;;
+
+status)
+   status dxrfd
+   RETVAL=0
+   ;;
+
+restart)
+   $0 stop
+   $0 start
+   ;;
+
+*)
+   echo "Usage: $0 {start|stop|status|restart}"
+   exit 1
+
+esac
+exit $RETVAL
+
