@@ -23,8 +23,8 @@ clean:
 
 .PHONY: install
 install: all
-	adduser $(DXRFD_USER) --system --disabled-login --home $(DXRFD_HOME)
 	addgroup $(DXRFD_USER) --system
+	adduser $(DXRFD_USER) --ingroup $(DXRFD_USER) --system --disabled-login --home $(DXRFD_HOME)
 	install -m 0755 dxrfd $(prefix)/dxrfd
 	install -m 0755 xrf_lh $(prefix)/xrf_lh
 	install -m 0644 -o $(DXRFD_USER) -g $(DXRFD_USER) dxrfd.cfg $(DXRFD_HOME)/dxrfd.cfg
