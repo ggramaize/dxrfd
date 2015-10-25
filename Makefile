@@ -40,7 +40,7 @@ install: all
 
 .PHONY: uninstall
 uninstall:
-	rm -f $(DXRFD_HOME)
+	rm -rf $(DXRFD_HOME)
 	rm -f $(prefix)/dxrfd
 	rm -f $(prefix)/xrf_lh
 	deluser $(DXRFD_USER) --force --remove-home
