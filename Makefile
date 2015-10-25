@@ -21,6 +21,9 @@ xrf_lh: xrf_lh.cpp
 clean:
 	rm -f dxrfd xrf_lh
 
+.PHONY: dist-clean
+dist-clean: clean
+
 .PHONY: install
 install: all
 	addgroup $(DXRFD_USER) --system
