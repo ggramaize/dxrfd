@@ -21,9 +21,10 @@ NAME=dxrfd
 DAEMON=/usr/bin/dxrfd
 USER=dxrfd
 DIR=/srv/dxrfd
-DAEMON_ARGS="/srv/dxrfd/dxrfd.log"
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
+LOG_FILE=$DIR/dxrfd.log 
+DAEMON_ARGS="$DIR/dxrfd.cfg $LOG_FILE"
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0
@@ -49,6 +50,9 @@ do_start()
         start-stop-daemon --background --make-pidfile \
                 --start --quiet --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
                 || return 1
+	# Necessary to boot this specific daemon.
+	[ ! -e $LOG_FILE ] || rm -f $LOG_FILE
+	# Starts the daemon
         start-stop-daemon --chuid $USER --chdir $DIR --background --make-pidfile \
                 --start --quiet --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_ARGS \
                 || return 2
