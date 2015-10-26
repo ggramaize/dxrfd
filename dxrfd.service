@@ -6,7 +6,7 @@ After=syslog.target local-fs.target remote-fs.target network.target
 Type=simple
 User=dxrfd
 Group=dxrfd
-ExecStart=/usr/bin/dxrfd ./dxrfd.cfg ./dxrfd.log
+ExecStart=/srv/dxrfd/systemd-wrapper.sh /usr/bin/dxrfd ./dxrfd.cfg ./dxrfd.log
 Restart=on-abort
 WorkingDirectory=/srv/dxrfd/
 
