@@ -41,6 +41,16 @@ install: all
 	ln -s $(DXRFD_HOME)/www/status.html $(DXRFD_HOME)/www/index.html
 	chown -R $(DXRFD_USER):$(DXRFD_USER) $(DXRFD_HOME)/www
 
+.PHONY: svcinst_debsysv
+svcinst_debsysv: all
+	install -m 0755 dxrfd.lsb-init /etc/init.d/dxrfd
+	update-rc.d dxrfd defaults
+
+.PHONY: svcrem
+svcrem: 
+	[ -e /etc/init.d/dxrfd ] && update-rc.d dxrfd remove
+	[ -e /etc/init.d/dxrfd ] && rm -f /etc/init.d/dxrfd
+
 .PHONY: uninstall
 uninstall:
 	rm -rf $(DXRFD_HOME)
