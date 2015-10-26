@@ -46,10 +46,19 @@ svcinst_debsysv: all
 	install -m 0755 dxrfd.lsb-init /etc/init.d/dxrfd
 	update-rc.d dxrfd defaults
 
+.PHONY: svcinst_systemd
+svcinst_systemd: all
+	install -m 0755 systemd-wrapper.sh $(DXRFD_HOME)/systemd-wrapper.sh
+	install -m 0644 dxrfd.service /etc/systemd/system/dxrfd.service
+	systemctl enable dxrfd
+
 .PHONY: svcrem
 svcrem: 
 	[ -e /etc/init.d/dxrfd ] && update-rc.d dxrfd remove
 	[ -e /etc/init.d/dxrfd ] && rm -f /etc/init.d/dxrfd
+	[ -e /etc/systemd/system/dxrfd.service ] && systemctl disable dxrfd
+	[ -e /etc/systemd/system/dxrfd.service ] && rm -f /etc/systemd/system/dxrfd.service
+	[ -e $(DXRFD_HOME)/systemd-wrapper.sh ] && rm -f $(DXRFD_HOME)/systemd-wrapper.sh
 
 .PHONY: uninstall
 uninstall:
