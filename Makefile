@@ -30,6 +30,7 @@ install: all
 	adduser $(DXRFD_USER) --ingroup $(DXRFD_USER) --system --disabled-login --home $(DXRFD_HOME)
 	install -m 0755 dxrfd $(prefix)/dxrfd
 	install -m 0755 xrf_lh $(prefix)/xrf_lh
+	install -m 0644 -o $(DXRFD_USER) -g $(DXRFD_USER) apache.conf $(DXRFD_HOME)/apache.conf
 	install -m 0644 -o $(DXRFD_USER) -g $(DXRFD_USER) dxrfd.cfg $(DXRFD_HOME)/dxrfd.cfg
 	install -m 0644 -o $(DXRFD_USER) -g $(DXRFD_USER) blocks.txt $(DXRFD_HOME)/blocks.txt
 	install -m 0644 -o $(DXRFD_USER) -g $(DXRFD_USER) xrfs.txt $(DXRFD_HOME)/xrfs.txt
@@ -40,6 +41,9 @@ install: all
 	install -m 0644 -o $(DXRFD_USER) -g $(DXRFD_USER) mm_training.css $(DXRFD_HOME)/www/g2_ircddb/mm_training.css
 	ln -s $(DXRFD_HOME)/www/status.html $(DXRFD_HOME)/www/index.html
 	chown -R $(DXRFD_USER):$(DXRFD_USER) $(DXRFD_HOME)/www
+	[ -e /etc/apache2/conf-available ] && ln -s $(DXRFD_HOME)/apache.conf /etc/apache2/conf-available/dxrfd.conf
+	[ -e /etc/apache2/conf-enabled ] && ln -s /etc/apache2/conf-available/dxrfd.conf /etc/apache2/conf-enabled/dxrfd.conf
+	[ -e /etc/apache2/conf.d ] && ln -s $(DXRFD_HOME)/apache.conf /etc/apache2/conf.d/dxrfd.conf
 
 .PHONY: svcinst_debsysv
 svcinst_debsysv: all
@@ -62,6 +66,9 @@ svcrem:
 
 .PHONY: uninstall
 uninstall:
+	[ -e /etc/apache2/conf.d/dxrfd.conf ] && rm -f /etc/apache2/conf.d/dxrfd.conf
+	[ -e /etc/apache2/conf-enabled/dxrfd.conf ] && rm -f /etc/apache2/conf-enabled/dxrfd.conf
+	[ -e /etc/apache2/conf-available/dxrfd.conf ] && rm -f /etc/apache2/conf-available/dxrfd.conf
 	rm -rf $(DXRFD_HOME)
 	rm -f $(prefix)/dxrfd
 	rm -f $(prefix)/xrf_lh
