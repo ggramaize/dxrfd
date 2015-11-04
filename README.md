@@ -99,19 +99,21 @@ After you executed the above netcat command, nc will wait there for you to type
 a specific sub-command.
 The sub-commands that you can use are listed below:
 
-pu                   "print users"
-mu                   "mute users"
-uu                   "unmute users"
-pl                   "print links"
-sh                   "shut it down"
-pb                   "print blocked callsigns"
-ab KI4LKF            "add a block on KI4LKF"
-rb KI4LKF            "remove the block on KI4LKF"
-mc KI4LKF            "mute the callsign KI4LKF"
-uc KI4LKF            "unmute the callsign KI4LKF"
-qsoy                 "qso details set to YES"
-qson                 "qso details set to NO"
-pv                   "print the current software version"
+| Command   | Role                                |
+|-----------|-------------------------------------|
+| pu        | print users                         |
+| mu        | mute users                          |
+| uu        | unmute users                        |
+| pl        | print links                         |
+| sh        | shut it down                        |
+| pb        | print blocked callsigns             |
+| ab KI4LKF | add a block on KI4LKF               |
+| rb KI4LKF | remove the block on KI4LKF          |
+| mc KI4LKF | mute the callsign KI4LKF            |
+| uc KI4LKF | unmute the callsign KI4LKF          |
+| qsoy      | qso details set to YES              |
+| qson      | qso details set to NO               |
+| pv        | print the current software version  |
 
 
 Here is an example of the output of the command pu
