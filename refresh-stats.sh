@@ -3,10 +3,10 @@
 CFG_PATH=/srv/dxrfd
 XRF_HOME=/srv/dxrfd
 # Fetch the admin user from the config file
-XRF_ADMIN="$(grep ADMIN= $CFG_PATH/dxrfd.cfg | sed 's/ADMIN=//')"
+XRF_ADMIN="$(grep ADMIN= $CFG_PATH/dxrfd.cfg | sed 's/ADMIN=//' | tr -dc 'A-Z0-9')"
 
 # Fetch the name of the reflector
-XRF_ID="$(grep OWNER= $CFG_PATH/dxrfd.cfg | sed 's/OWNER=//')"
+XRF_ID="$(grep OWNER= $CFG_PATH/dxrfd.cfg | sed 's/OWNER=//' | tr -dc 'A-Z0-9')"
 
 # Grab the stats and push them in the web directory. We perform
 # this operation in two steps because the page generation is quite slow.
